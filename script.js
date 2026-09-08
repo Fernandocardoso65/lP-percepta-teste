@@ -58,3 +58,18 @@ formularioFinal.addEventListener("submit", function (event) {
     alert("Erro ao enviar mensagem.");
   });
 });
+// ===============================
+// ROLAGEM SUAVE PARA O FORMULÁRIO
+// ===============================
+
+const botaoPrincipal = document.querySelector(".botao--principal");
+const secaoContato = document.getElementById("contato");
+
+botaoPrincipal.addEventListener("click", function (event) {
+  event.preventDefault();
+
+  secaoContato.scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
+});
