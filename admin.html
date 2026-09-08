@@ -71,10 +71,20 @@
             background: #56c50f;
             font-weight: bold;
             cursor: pointer;
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease,
+                filter 0.2s ease;
         }
 
         button:hover {
-            opacity: 0.9;
+            transform: translateY(-2px);
+            filter: brightness(1.08);
+            box-shadow: 0 0 20px rgba(86, 197, 15, 0.35);
+        }
+
+        button:active {
+            transform: translateY(0) scale(0.98);
         }
 
         /* CAMPO DA SENHA */
@@ -106,6 +116,13 @@
 
             border: none;
             cursor: pointer;
+            box-shadow: none;
+        }
+
+        .mostrar-senha:hover {
+            transform: none;
+            box-shadow: none;
+            background: transparent;
         }
 
         /* ERROS */
@@ -130,11 +147,12 @@
         }
 
         .topo h1 {
-            margin-bottom: 5px;
+            margin: 0 0 5px 0;
         }
 
         .topo p {
             color: #aaa;
+            margin: 0;
         }
 
         .topo button {
@@ -142,12 +160,57 @@
             padding: 10px 25px;
         }
 
+        /* BOTÃO VOLTAR */
+
+        .btn-voltar {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            padding: 10px 18px;
+            margin-bottom: 22px;
+
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(86, 197, 15, 0.4);
+            border-radius: 999px;
+
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+
+            transition:
+                transform 0.25s ease,
+                background 0.25s ease,
+                box-shadow 0.25s ease,
+                color 0.25s ease;
+        }
+
+        .btn-voltar:hover {
+            background: #56c50f;
+            color: #000;
+            transform: translateX(-4px);
+            box-shadow: 0 0 22px rgba(86, 197, 15, 0.45);
+        }
+
+        /* CARDS DOS LEADS */
+
         .lead {
             background: #1c1c1c;
             padding: 22px;
             border-radius: 12px;
             margin-bottom: 15px;
             border: 1px solid #292929;
+
+            transition:
+                transform 0.25s ease,
+                border-color 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+        .lead:hover {
+            transform: translateY(-3px);
+            border-color: rgba(86, 197, 15, 0.45);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
         }
 
         .lead strong {
@@ -164,6 +227,10 @@
                 padding: 25px;
             }
 
+            .container {
+                margin: 35px auto;
+            }
+
             .topo {
                 flex-direction: column;
                 align-items: flex-start;
@@ -171,6 +238,11 @@
 
             .topo button {
                 width: 100%;
+            }
+
+            .btn-voltar {
+                width: 100%;
+                justify-content: center;
             }
         }
     </style>
@@ -236,8 +308,17 @@
         <div class="topo">
 
             <div>
+
+                <a href="index.html" class="btn-voltar">
+                    ← Voltar para a Landing
+                </a>
+
                 <h1>Contatos recebidos</h1>
-                <p>Leads enviados pela landing page.</p>
+
+                <p>
+                    Leads enviados pela landing page.
+                </p>
+
             </div>
 
             <button id="sair">
