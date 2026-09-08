@@ -200,13 +200,18 @@ function aplicarMascaraTelefone(campo) {
 
     let valor = campo.value.replace(/\D/g, "");
 
-    // Máximo: DDD + 9 dígitos
     valor = valor.slice(0, 11);
+
+    // Se apagar todos os números, deixa o campo vazio
+    if (valor.length === 0) {
+      campo.value = "";
+      return;
+    }
 
     if (valor.length <= 2) {
 
       valor = valor.replace(
-        /^(\d{0,2})/,
+        /^(\d{1,2})$/,
         "($1"
       );
 
