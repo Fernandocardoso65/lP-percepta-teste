@@ -26,6 +26,10 @@ formularioTopo.addEventListener("submit", function (event) {
   const email = document.getElementById("email").value.trim();
   const telefone = document.getElementById("telefone").value.trim();
 
+  const termos = formularioTopo.querySelector(
+    'input[name="termos"]'
+  );
+
   if (!nome || !email || !telefone) {
     alert("Preencha todos os campos antes de enviar.");
     return;
@@ -33,6 +37,11 @@ formularioTopo.addEventListener("submit", function (event) {
 
   if (!email.includes("@") || !email.includes(".")) {
     alert("Digite um e-mail válido.");
+    return;
+  }
+
+  if (!termos.checked) {
+    alert("Você precisa concordar com os termos antes de enviar.");
     return;
   }
 
@@ -67,6 +76,10 @@ formularioFinal.addEventListener("submit", function (event) {
   const email = document.getElementById("email-final").value.trim();
   const telefone = document.getElementById("telefone-final").value.trim();
 
+  const termosFinal = formularioFinal.querySelector(
+    'input[name="termos-final"]'
+  );
+
   if (!nome || !email || !telefone) {
     alert("Preencha todos os campos antes de enviar.");
     return;
@@ -74,6 +87,11 @@ formularioFinal.addEventListener("submit", function (event) {
 
   if (!email.includes("@") || !email.includes(".")) {
     alert("Digite um e-mail válido.");
+    return;
+  }
+
+  if (!termosFinal.checked) {
+    alert("Você precisa concordar com os termos antes de enviar.");
     return;
   }
 
