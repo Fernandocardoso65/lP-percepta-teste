@@ -12,14 +12,29 @@ firebase.initializeApp(firebaseConfig);
 
 const database = firebase.database();
 
+
+// ===============================
+// FORMULÁRIO DO TOPO
+// ===============================
+
 const formularioTopo = document.getElementById("contato-topo");
 
 formularioTopo.addEventListener("submit", function (event) {
   event.preventDefault();
 
-  const nome = document.getElementById("nome").value;
-  const email = document.getElementById("email").value;
-  const telefone = document.getElementById("telefone").value;
+  const nome = document.getElementById("nome").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const telefone = document.getElementById("telefone").value.trim();
+
+  if (!nome || !email || !telefone) {
+    alert("Preencha todos os campos antes de enviar.");
+    return;
+  }
+
+  if (!email.includes("@") || !email.includes(".")) {
+    alert("Digite um e-mail válido.");
+    return;
+  }
 
   database.ref("leads").push({
     nome: nome,
@@ -27,20 +42,40 @@ formularioTopo.addEventListener("submit", function (event) {
     telefone: telefone,
     mensagem: "Lead - Landing Page Percepta",
     criadoEm: Date.now()
+  })
+  .then(() => {
+    alert("Mensagem enviada com sucesso!");
+    formularioTopo.reset();
+  })
+  .catch((erro) => {
+    console.error("Erro ao enviar:", erro);
+    alert("Erro ao enviar mensagem.");
   });
-
-  alert("Mensagem enviada com sucesso!");
-
-  formularioTopo.reset();
 });
+
+
+// ===============================
+// FORMULÁRIO FINAL
+// ===============================
+
 const formularioFinal = document.getElementById("contato-final");
 
 formularioFinal.addEventListener("submit", function (event) {
   event.preventDefault();
 
-  const nome = document.getElementById("nome-final").value;
-  const email = document.getElementById("email-final").value;
-  const telefone = document.getElementById("telefone-final").value;
+  const nome = document.getElementById("nome-final").value.trim();
+  const email = document.getElementById("email-final").value.trim();
+  const telefone = document.getElementById("telefone-final").value.trim();
+
+  if (!nome || !email || !telefone) {
+    alert("Preencha todos os campos antes de enviar.");
+    return;
+  }
+
+  if (!email.includes("@") || !email.includes(".")) {
+    alert("Digite um e-mail válido.");
+    return;
+  }
 
   database.ref("leads").push({
     nome: nome,
@@ -58,6 +93,8 @@ formularioFinal.addEventListener("submit", function (event) {
     alert("Erro ao enviar mensagem.");
   });
 });
+
+
 // ===============================
 // ROLAGEM SUAVE PARA O FORMULÁRIO
 // ===============================
@@ -65,11 +102,47 @@ formularioFinal.addEventListener("submit", function (event) {
 const botaoPrincipal = document.querySelector(".botao--principal");
 const secaoContato = document.getElementById("contato");
 
-botaoPrincipal.addEventListener("click", function (event) {
-  event.preventDefault();
+if (botaoPrincipal && secaoContato) {
 
-  secaoContato.scrollIntoView({
-    behavior: "smooth",
-    block: "start"
+  botaoPrincipal.addEventListener("click", function (event) {
+    event.preventDefault();
+
+    secaoContato.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
   });
-});
+
+}
+
+
+// ===============================
+// CTA FINAL - DIRECIONA AO FORMULÁRIO
+// ===============================
+
+const botaoCtaFinal = document.querySelector(".botao--cta");
+const formularioContatoFinal = document.getElementById("contato-final");
+const campoNomeFinal = document.getElementById("nome-final");
+
+if (botaoCtaFinal && formularioContatoFinal) {
+
+  botaoCtaFinal.addEventListener("click", function (event) {
+
+    event.preventDefault();
+
+    formularioContatoFinal.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    });
+
+    setTimeout(() => {
+
+      if (campoNomeFinal) {
+        campoNomeFinal.focus();
+      }
+
+    }, 600);
+
+  });
+
+}
