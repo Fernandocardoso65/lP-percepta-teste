@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Painel Administrativo | Percepta</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #111;
+            color: #fff;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 60px auto;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+        }
+
+        /* LOGIN */
+
+        .login {
+            max-width: 420px;
+            margin: 100px auto;
+            background: #1c1c1c;
+            padding: 35px;
+            border-radius: 16px;
+        }
+
+        .login h1 {
+            color: #56c50f;
+            margin-bottom: 25px;
+        }
+
+        .login h2 {
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 15px;
+            border: 1px solid #444;
+            border-radius: 8px;
+            background: #262626;
+            color: white;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #56c50f;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            background: #56c50f;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        /* CAMPO DA SENHA */
+
+        .campo-senha {
+            position: relative;
+        }
+
+        .campo-senha input {
+            padding-right: 55px;
+        }
+
+        .mostrar-senha {
+            position: absolute;
+            right: 8px;
+            top: 5px;
+
+            width: 42px;
+            height: 36px;
+            padding: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: transparent;
+            color: white;
+            font-size: 18px;
+
+            border: none;
+            cursor: pointer;
+        }
+
+        /* ERROS */
+
+        .erro {
+            color: #ff5555;
+            margin-top: 15px;
+        }
+
+        /* PAINEL */
+
+        #painel {
+            display: none;
+        }
+
+        .topo {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .topo h1 {
+            margin-bottom: 5px;
+        }
+
+        .topo p {
+            color: #aaa;
+        }
+
+        .topo button {
+            width: auto;
+            padding: 10px 25px;
+        }
+
+        .lead {
+            background: #1c1c1c;
+            padding: 22px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #292929;
+        }
+
+        .lead strong {
+            color: #56c50f;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 600px) {
+
+            .login {
+                width: 90%;
+                margin: 50px auto;
+                padding: 25px;
+            }
+
+            .topo {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .topo button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- LOGIN -->
+
+    <div class="login" id="login">
+
+        <h1>Percepta</h1>
+
+        <h2>Painel administrativo</h2>
+
+        <form id="form-login">
+
+            <input
+                type="email"
+                id="email-admin"
+                placeholder="E-mail"
+                autocomplete="email"
+                required
+            >
+
+            <div class="campo-senha">
+
+                <input
+                    type="password"
+                    id="senha-admin"
+                    placeholder="Senha"
+                    autocomplete="current-password"
+                    required
+                >
+
+                <button
+                    type="button"
+                    id="mostrar-senha"
+                    class="mostrar-senha"
+                    aria-label="Mostrar senha"
+                    title="Mostrar senha"
+                >
+                    👁
+                </button>
+
+            </div>
+
+            <button type="submit">
+                Entrar
+            </button>
+
+            <p class="erro" id="erro-login"></p>
+
+        </form>
+
+    </div>
+
+
+    <!-- PAINEL ADMINISTRATIVO -->
+
+    <main class="container" id="painel">
+
+        <div class="topo">
+
+            <div>
+                <h1>Contatos recebidos</h1>
+                <p>Leads enviados pela landing page.</p>
+            </div>
+
+            <button id="sair">
+                Sair
+            </button>
+
+        </div>
+
+        <div id="lista-leads">
+            Carregando contatos...
+        </div>
+
+    </main>
+
+
+    <!-- FIREBASE -->
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+    <script src="admin.js"></script>
+
+</body>
+
+</html>
