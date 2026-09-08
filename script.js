@@ -40,6 +40,16 @@ formularioTopo.addEventListener("submit", function (event) {
     return;
   }
 
+  const telefoneNumeros = telefone.replace(/\D/g, "");
+
+  if (
+    telefoneNumeros.length < 10 ||
+    telefoneNumeros.length > 11
+  ) {
+    alert("Digite um telefone válido com DDD.");
+    return;
+  }
+
   if (!termos.checked) {
     alert("Você precisa concordar com os termos antes de enviar.");
     return;
@@ -87,6 +97,16 @@ formularioFinal.addEventListener("submit", function (event) {
 
   if (!email.includes("@") || !email.includes(".")) {
     alert("Digite um e-mail válido.");
+    return;
+  }
+
+  const telefoneNumeros = telefone.replace(/\D/g, "");
+
+  if (
+    telefoneNumeros.length < 10 ||
+    telefoneNumeros.length > 11
+  ) {
+    alert("Digite um telefone válido com DDD.");
     return;
   }
 
@@ -164,3 +184,65 @@ if (botaoCtaFinal && formularioContatoFinal) {
   });
 
 }
+
+
+// ===============================
+// MÁSCARA DE TELEFONE
+// ===============================
+
+function aplicarMascaraTelefone(campo) {
+
+  if (!campo) {
+    return;
+  }
+
+  campo.addEventListener("input", function () {
+
+    let valor = campo.value.replace(/\D/g, "");
+
+    // Máximo: DDD + 9 dígitos
+    valor = valor.slice(0, 11);
+
+    if (valor.length <= 2) {
+
+      valor = valor.replace(
+        /^(\d{0,2})/,
+        "($1"
+      );
+
+    } else if (valor.length <= 6) {
+
+      valor = valor.replace(
+        /^(\d{2})(\d+)/,
+        "($1) $2"
+      );
+
+    } else if (valor.length <= 10) {
+
+      valor = valor.replace(
+        /^(\d{2})(\d{4})(\d{0,4})/,
+        "($1) $2-$3"
+      );
+
+    } else {
+
+      valor = valor.replace(
+        /^(\d{2})(\d{5})(\d{4})$/,
+        "($1) $2-$3"
+      );
+
+    }
+
+    campo.value = valor;
+
+  });
+
+}
+
+aplicarMascaraTelefone(
+  document.getElementById("telefone")
+);
+
+aplicarMascaraTelefone(
+  document.getElementById("telefone-final")
+);
