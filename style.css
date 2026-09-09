@@ -2425,3 +2425,13 @@ button {
     }
 
 }
+
+/* =========================================================
+   ESTABILIZA ALTURA DOS CARDS DE PERDAS — DESKTOP
+   ========================================================= */
+
+@media (min-width: 769px) {
+    #cartao-perda {
+        min-height: 475px;
+    }
+}
