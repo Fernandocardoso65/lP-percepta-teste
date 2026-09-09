@@ -62,14 +62,14 @@ formularioTopo.addEventListener("submit", function (event) {
     mensagem: "Lead - Landing Page Percepta",
     criadoEm: Date.now()
   })
-  .then(() => {
-    alert("Mensagem enviada com sucesso!");
-    formularioTopo.reset();
-  })
-  .catch((erro) => {
-    console.error("Erro ao enviar:", erro);
-    alert("Erro ao enviar mensagem.");
-  });
+    .then(() => {
+      alert("Mensagem enviada com sucesso!");
+      formularioTopo.reset();
+    })
+    .catch((erro) => {
+      console.error("Erro ao enviar:", erro);
+      alert("Erro ao enviar mensagem.");
+    });
 });
 
 
@@ -122,14 +122,14 @@ formularioFinal.addEventListener("submit", function (event) {
     mensagem: "Lead - Formulário final Percepta",
     criadoEm: Date.now()
   })
-  .then(() => {
-    alert("Mensagem enviada com sucesso!");
-    formularioFinal.reset();
-  })
-  .catch((erro) => {
-    console.error("Erro ao enviar:", erro);
-    alert("Erro ao enviar mensagem.");
-  });
+    .then(() => {
+      alert("Mensagem enviada com sucesso!");
+      formularioFinal.reset();
+    })
+    .catch((erro) => {
+      console.error("Erro ao enviar:", erro);
+      alert("Erro ao enviar mensagem.");
+    });
 });
 
 
@@ -338,6 +338,15 @@ abasPerdas.forEach((aba) => {
 
     if (conteudosPerda[tipo] && cartaoPerda) {
       cartaoPerda.innerHTML = conteudosPerda[tipo];
+
+      if (window.innerWidth <= 768) {
+        setTimeout(() => {
+          cartaoPerda.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+        }, 100);
+      }
     }
   });
 });

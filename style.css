@@ -2376,7 +2376,7 @@ button {
 
         width: 260px;
         max-width: calc(100% - 36px);
-        min-height: 48px;
+        min-height: 52px;
 
         margin-top: 34px;
 
@@ -2433,5 +2433,63 @@ button {
 @media (min-width: 769px) {
     #cartao-perda {
         min-height: 475px;
+    }
+}
+
+/* =========================================================
+   LINHA INFERIOR DO HEADER
+   ========================================================= */
+
+.topo {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+/* Entrar em contato — Header Desktop */
+@media (min-width: 769px) {
+    .botao--topo {
+        min-width: 220px;
+        min-height: 56px;
+        padding: 14px 30px;
+        font-size: 18px;
+    }
+}
+
+/* Quero o controle da minha empresa — Desktop */
+@media (min-width: 769px) {
+    .botao--principal {
+        min-width: 560px;
+        min-height: 64px;
+        padding: 16px 36px;
+        font-size: 22px;
+    }
+}
+
+/* Aumenta levemente as imagens dos benefícios no desktop */
+@media (min-width: 769px) {
+    .beneficio__visual {
+        transform: scale(1.06);
+    }
+}
+
+/* =========================================================
+   BENEFÍCIOS — TEXTO UM POUCO MAIOR NO DESKTOP
+   ========================================================= */
+
+@media (min-width: 769px) {
+
+    .beneficio__texto h3 {
+        font-size: 1.45rem;
+    }
+
+    .beneficio__texto ul li,
+    .beneficio--estoque .beneficio__texto ul li {
+        font-size: 1.6rem;
+    }
+
+    .beneficio__texto>p,
+    .beneficio__frase,
+    .beneficio--estoque .beneficio__texto>p,
+    .beneficio--vigilante .beneficio__texto p {
+        font-size: 1.6rem;
     }
 }
