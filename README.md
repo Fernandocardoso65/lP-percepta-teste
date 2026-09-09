@@ -1,6 +1,4 @@
-# LP Percepta - Teste Mybrief
-
-# LP Percepta — Teste Prático
+# LP Percepta — Teste Prático - My Bryef
 
 Landing page desenvolvida para o teste técnico de Desenvolvedor Web Júnior da Mybrief, a partir do layout disponibilizado no Figma.
 
