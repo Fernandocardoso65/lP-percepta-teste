@@ -20,7 +20,7 @@ Optei por utilizar HTML, CSS e JavaScript sem frameworks para manter o projeto s
 
 Clone o repositório:
 
-git clone URL-DO-REPOSITORIO
+git clone : https://github.com/Fernandocardoso65/lP-percepta-teste
 
 Entre na pasta:
 
