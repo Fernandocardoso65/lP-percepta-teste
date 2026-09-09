@@ -35,6 +35,24 @@
                 Entrar em contato
             </a>
 
+            <button type="button" class="menu-mobile__abrir" aria-label="Abrir menu" aria-expanded="false">
+                +
+            </button>
+
+        </div>
+
+        <div class="menu-mobile" aria-hidden="true">
+
+            <button type="button" class="menu-mobile__fechar" aria-label="Fechar menu">
+                ×
+            </button>
+
+            <a href="#contato" class="botao menu-mobile__contato">
+                Entrar em contato
+            </a>
+
+            <img src="assets/logo.png" alt="Percepta" class="menu-mobile__logo">
+
         </div>
 
     </header>
@@ -567,32 +585,28 @@
 
                 </h2>
 
-
                 <nav class="abas" aria-label="Tipos de perda">
 
-                    <button type="button" class="aba aba--ativa">
-                        Tempo improdutivo
+                    <button type="button" class="aba aba--ativa" data-card="tempo">
+                        <span>Tempo improdutivo</span>
                     </button>
 
-
-                    <button type="button" class="aba">
+                    <button type="button" class="aba" data-card="fluxo">
                         Fluxo quebrado
                     </button>
 
-
-                    <button type="button" class="aba">
+                    <button type="button" class="aba" data-card="estrutura">
                         Estrutura mal utilizada
                     </button>
 
-
-                    <button type="button" class="aba">
+                    <button type="button" class="aba" data-card="energia">
                         Energia + disciplina
                     </button>
 
                 </nav>
 
 
-                <article class="cartao-perda">
+                <article class="cartao-perda" id="cartao-perda">
 
                     <div class="cartao-perda__texto">
 

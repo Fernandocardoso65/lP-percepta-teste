@@ -251,3 +251,130 @@ aplicarMascaraTelefone(
 aplicarMascaraTelefone(
   document.getElementById("telefone-final")
 );
+/* =========================================================
+   INTERAÇÃO — CARDS DE PERDAS
+   ========================================================= */
+
+
+const abasPerdas = document.querySelectorAll(".abas .aba");
+const cartaoPerda = document.getElementById("cartao-perda");
+
+const conteudosPerda = {
+  tempo: `
+    <div class="cartao-perda__texto">
+      <h3>Tempo improdutivo</h3>
+
+      <h4>
+        Funcionários parados
+        em horário de pico.
+      </h4>
+
+      <p>
+        Três pessoas paradas por
+        <strong>28 minutos.</strong>
+      </p>
+
+      <p>
+        <strong>
+          Loja aberta.
+          Venda escapando.
+        </strong>
+      </p>
+    </div>
+
+    <div class="cartao-perda__imagem">
+      <img
+        src="assets/imagem5.png"
+        alt="Funcionários parados em horário de pico">
+    </div>
+  `,
+
+  fluxo: `
+    <picture class="cartao-perda__imagem-card">
+      <source
+        media="(max-width: 768px)"
+        srcset="assets/Cardfluxomobile.png">
+
+      <img
+        src="assets/Cardfluxoquebrado.png"
+        alt="Fluxo quebrado">
+    </picture>
+  `,
+
+  estrutura: `
+    <picture class="cartao-perda__imagem-card">
+      <source
+        media="(max-width: 768px)"
+        srcset="assets/Cardestruturamobile.png">
+
+      <img
+        src="assets/Cardestrutura.png"
+        alt="Estrutura mal utilizada">
+    </picture>
+  `,
+
+  energia: `
+    <picture class="cartao-perda__imagem-card">
+      <source
+        media="(max-width: 768px)"
+        srcset="assets/Cardenergiamobile.png">
+
+      <img
+        src="assets/Cardenergia.png"
+        alt="Energia e disciplina">
+    </picture>
+  `
+};
+
+abasPerdas.forEach((aba) => {
+  aba.addEventListener("click", () => {
+    const tipo = aba.dataset.card;
+
+    abasPerdas.forEach((item) => {
+      item.classList.remove("aba--ativa");
+    });
+
+    aba.classList.add("aba--ativa");
+
+    if (conteudosPerda[tipo] && cartaoPerda) {
+      cartaoPerda.innerHTML = conteudosPerda[tipo];
+    }
+  });
+});
+
+/* =========================================================
+   MENU MOBILE
+   ========================================================= */
+
+const botaoAbrirMenu = document.querySelector(".menu-mobile__abrir");
+const botaoFecharMenu = document.querySelector(".menu-mobile__fechar");
+const menuMobile = document.querySelector(".menu-mobile");
+
+if (botaoAbrirMenu && botaoFecharMenu && menuMobile) {
+
+  botaoAbrirMenu.addEventListener("click", () => {
+    menuMobile.classList.add("is-open");
+    menuMobile.setAttribute("aria-hidden", "false");
+    botaoAbrirMenu.setAttribute("aria-expanded", "true");
+  });
+
+  botaoFecharMenu.addEventListener("click", () => {
+    menuMobile.classList.remove("is-open");
+    menuMobile.setAttribute("aria-hidden", "true");
+    botaoAbrirMenu.setAttribute("aria-expanded", "false");
+  });
+
+}
+
+const botaoContatoMenu = document.querySelector(".menu-mobile__contato");
+
+if (botaoContatoMenu && menuMobile) {
+  botaoContatoMenu.addEventListener("click", () => {
+    menuMobile.classList.remove("is-open");
+    menuMobile.setAttribute("aria-hidden", "true");
+
+    if (botaoAbrirMenu) {
+      botaoAbrirMenu.setAttribute("aria-expanded", "false");
+    }
+  });
+}
