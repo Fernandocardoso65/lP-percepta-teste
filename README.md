@@ -20,17 +20,23 @@ Optei por utilizar HTML, CSS e JavaScript sem frameworks para manter o projeto s
 
 Clone o repositório:
 
-git clone : https://github.com/Fernandocardoso65/lP-percepta-teste
+```bash
+git clone https://github.com/Fernandocardoso65/IP-percepta-teste.git
+```
 
 Entre na pasta:
 
-cd percepta-landing-page
+```bash
+cd IP-percepta-teste
+```
 
 O projeto não possui processo de build.
 
-É possível abrir o index.html diretamente no navegador ou iniciar um servidor local:
+É possível abrir o arquivo `index.html` diretamente no navegador ou iniciar um servidor local:
 
+```bash
 python3 -m http.server 8000
+```
 
 Depois acesse:
 
