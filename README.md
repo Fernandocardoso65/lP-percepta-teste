@@ -133,7 +133,7 @@ Optei por continuar trabalhando no projeto para estudar melhor o layout, aprimor
 
 Página publicada:
 
-LINK-DA-VERCEL
+l-p-percepta-teste.vercel.app
 
 ## Repositório
 
