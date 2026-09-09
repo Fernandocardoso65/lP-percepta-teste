@@ -2493,3 +2493,15 @@ button {
         font-size: 1.6rem;
     }
 }
+
+/* =========================================================
+   CHECKBOXES — PADRONIZAÇÃO
+   ========================================================= */
+
+.checkbox input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    min-width: 18px;
+    flex: 0 0 18px;
+    margin: 0;
+}
