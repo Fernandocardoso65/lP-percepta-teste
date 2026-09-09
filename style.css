@@ -658,10 +658,6 @@ button {
    PERDAS
    ========================================================= */
 
-/* =========================================================
-   PERDAS
-   ========================================================= */
-
 .perdas {
     background: var(--preto);
     padding: 80px 0 110px;
@@ -859,9 +855,6 @@ button {
     font-weight: 500;
 }
 
-/* "É controle." precisa ficar em branco, igual ao Figma.
-   Recomendo envolver esse trecho no HTML com <span class="branco">É controle.</span>
-   Assim que fizer isso, essa regra assume o estilo certo automaticamente: */
 .controle__conteudo h2 .branco {
     color: var(--branco);
     font-weight: 900;
@@ -1091,7 +1084,7 @@ button {
 }
 
 /* =========================================================
-   RESPONSIVO
+   RESPONSIVIDADE
    ========================================================= */
 
 @media (max-width: 1024px) {
@@ -1170,7 +1163,7 @@ button {
 }
 
 /* ===============================
-   AJUSTE DE ESPAÇAMENTO - FIGMA
+   AJUSTE DE ESPAÇAMENTO 
 ================================ */
 
 .beneficio {
@@ -1197,7 +1190,7 @@ button {
 }
 
 /* =========================================================
-   MOBILE FINAL — FIGMA
+   MOBILE FINAL 
    ========================================================= */
 
 @media (max-width: 768px) {
@@ -1392,8 +1385,8 @@ button {
     }
 
 
-    /* Faixa vermelha:
-     no mobile o Figma mostra uma mensagem por vez */
+    /* Faixa vermelha: */
+   
     .hero__faixa {
         display: flex;
         flex-direction: row;
