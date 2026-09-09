@@ -1386,7 +1386,7 @@ button {
 
 
     /* Faixa vermelha: */
-   
+
     .hero__faixa {
         display: flex;
         flex-direction: row;
@@ -2714,7 +2714,7 @@ input[type="checkbox"] {
     }
 }
 
-/* RODAPÉ — tipografia mobile igual ao Figma */
+/* RODAPÉ — */
 @media (max-width: 768px) {
 
     .rodape__descricao {
@@ -2750,18 +2750,19 @@ input[type="checkbox"] {
     }
 }
 
-@media (max-width: 768px) {
+@@media (max-width: 768px) {
 
     .rodape__descricao p {
         font-family: 'Roboto', sans-serif !important;
         font-size: 18px !important;
         font-weight: 300 !important;
-        line-height: 1.05 !important;
+        line-height: 1.15 !important;
 
-        width: 330px !important;
-        max-width: 330px !important;
+        width: 100% !important;
+        max-width: 320px !important;
 
         margin: 12px auto 0 !important;
+        padding: 0 !important;
         text-align: center !important;
     }
 
