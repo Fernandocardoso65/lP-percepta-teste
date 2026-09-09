@@ -20,7 +20,7 @@ const database = firebase.database();
 
 
 // ===============================
-// ELEMENTOS DA PÁGINA
+// ELEMENTOS
 // ===============================
 
 const login = document.getElementById("login");
@@ -34,9 +34,9 @@ const senhaAdmin = document.getElementById("senha-admin");
 const erroLogin = document.getElementById("erro-login");
 
 const listaLeads = document.getElementById("lista-leads");
+const totalLeads = document.getElementById("total-leads");
 
 const botaoSair = document.getElementById("sair");
-
 const botaoMostrarSenha = document.getElementById("mostrar-senha");
 
 
@@ -49,7 +49,6 @@ botaoMostrarSenha.addEventListener("click", function () {
   if (senhaAdmin.type === "password") {
 
     senhaAdmin.type = "text";
-
     botaoMostrarSenha.textContent = "🙈";
 
     botaoMostrarSenha.setAttribute(
@@ -65,7 +64,6 @@ botaoMostrarSenha.addEventListener("click", function () {
   } else {
 
     senhaAdmin.type = "password";
-
     botaoMostrarSenha.textContent = "👁";
 
     botaoMostrarSenha.setAttribute(
@@ -115,7 +113,7 @@ formLogin.addEventListener("submit", function (event) {
 
 
 // ===============================
-// VERIFICA LOGIN
+// ESTADO DA AUTENTICAÇÃO
 // ===============================
 
 auth.onAuthStateChanged((usuario) => {
@@ -143,8 +141,11 @@ auth.onAuthStateChanged((usuario) => {
 
 function carregarLeads() {
 
-  listaLeads.innerHTML =
-    "Carregando contatos...";
+  listaLeads.innerHTML = `
+    <div class="carregando">
+      Carregando contatos...
+    </div>
+  `;
 
   database
     .ref("leads")
@@ -155,63 +156,224 @@ function carregarLeads() {
 
       if (!snapshot.exists()) {
 
-        listaLeads.innerHTML =
-          "<p>Nenhum contato recebido.</p>";
+        totalLeads.textContent = "0";
+
+        listaLeads.innerHTML = `
+          <div class="tabela-leads">
+            <div class="vazio">
+              Nenhum contato recebido.
+            </div>
+          </div>
+        `;
 
         return;
 
       }
 
+
       const leads = [];
+
 
       snapshot.forEach((childSnapshot) => {
 
         leads.push({
+
           id: childSnapshot.key,
+
           ...childSnapshot.val()
+
         });
 
       });
 
-      // Mais recentes primeiro
-      leads.reverse();
+
+      // ===============================
+      // MAIS RECENTES PRIMEIRO
+      // ===============================
+
+      leads.sort((a, b) => {
+
+        return (
+          Number(b.criadoEm || 0) -
+          Number(a.criadoEm || 0)
+        );
+
+      });
+
+
+      // Atualiza contador
+
+      totalLeads.textContent = leads.length;
+
+
+      // Cria estrutura da tabela
 
       listaLeads.innerHTML = "";
 
-      leads.forEach((lead) => {
 
-        const data =
-          new Date(lead.criadoEm);
+      const tabela =
+        document.createElement("div");
+
+      tabela.classList.add("tabela-leads");
+
+
+      // ===============================
+      // CABEÇALHO
+      // ===============================
+
+      const cabecalho =
+        document.createElement("div");
+
+      cabecalho.classList.add(
+        "lead-cabecalho"
+      );
+
+      cabecalho.innerHTML = `
+        <div>Nome</div>
+        <div>E-mail</div>
+        <div>Telefone</div>
+        <div>Origem</div>
+        <div>Recebido em</div>
+      `;
+
+      tabela.appendChild(cabecalho);
+
+
+      // ===============================
+      // LEADS
+      // ===============================
+
+      leads.forEach((lead) => {
 
         const card =
           document.createElement("div");
 
         card.classList.add("lead");
 
-        const nome = document.createElement("p");
-        const email = document.createElement("p");
-        const telefone = document.createElement("p");
-        const origem = document.createElement("p");
-        const recebido = document.createElement("p");
 
-        nome.innerHTML = "<strong>Nome:</strong> ";
-        nome.append(document.createTextNode(lead.nome || ""));
+        // ===============================
+        // DATA
+        // ===============================
 
-        email.innerHTML = "<strong>E-mail:</strong> ";
-        email.append(document.createTextNode(lead.email || ""));
+        let dataFormatada =
+          "Data não disponível";
 
-        telefone.innerHTML = "<strong>Telefone:</strong> ";
-        telefone.append(document.createTextNode(lead.telefone || ""));
 
-        origem.innerHTML = "<strong>Origem:</strong> ";
-        origem.append(document.createTextNode(lead.mensagem || ""));
+        if (lead.criadoEm) {
 
-        recebido.innerHTML = "<strong>Recebido em:</strong> ";
-        recebido.append(
-          document.createTextNode(
-            data.toLocaleString("pt-BR")
-          )
-        );
+          const data =
+            new Date(
+              Number(lead.criadoEm)
+            );
+
+
+          if (!isNaN(data.getTime())) {
+
+            dataFormatada =
+              data.toLocaleString(
+                "pt-BR",
+                {
+                  day: "2-digit",
+                  month: "2-digit",
+                  year: "numeric",
+                  hour: "2-digit",
+                  minute: "2-digit"
+                }
+              );
+
+          }
+
+        }
+
+
+        // ===============================
+        // CRIA CÉLULA
+        // ===============================
+
+        function criarCelula(
+          titulo,
+          valor,
+          classe = ""
+        ) {
+
+          const celula =
+            document.createElement("div");
+
+          celula.classList.add(
+            "lead-celula"
+          );
+
+
+          if (classe) {
+
+            celula.classList.add(
+              classe
+            );
+
+          }
+
+
+          const label =
+            document.createElement("strong");
+
+          label.textContent =
+            titulo;
+
+
+          const conteudo =
+            document.createElement("span");
+
+          conteudo.textContent =
+            valor || "-";
+
+
+          celula.append(
+            label,
+            conteudo
+          );
+
+
+          return celula;
+
+        }
+
+
+        const nome =
+          criarCelula(
+            "Nome",
+            lead.nome,
+            "nome"
+          );
+
+
+        const email =
+          criarCelula(
+            "E-mail",
+            lead.email
+          );
+
+
+        const telefone =
+          criarCelula(
+            "Telefone",
+            lead.telefone
+          );
+
+
+        const origem =
+          criarCelula(
+            "Origem",
+            lead.mensagem
+          );
+
+
+        const recebido =
+          criarCelula(
+            "Recebido em",
+            dataFormatada,
+            "data"
+          );
+
 
         card.append(
           nome,
@@ -221,9 +383,15 @@ function carregarLeads() {
           recebido
         );
 
-        listaLeads.appendChild(card);
+
+        tabela.appendChild(card);
 
       });
+
+
+      listaLeads.appendChild(
+        tabela
+      );
 
     })
 
@@ -234,8 +402,13 @@ function carregarLeads() {
         erro
       );
 
-      listaLeads.innerHTML =
-        "<p class='erro'>Não foi possível carregar os contatos.</p>";
+      listaLeads.innerHTML = `
+        <div class="tabela-leads">
+          <div class="vazio erro">
+            Não foi possível carregar os contatos.
+          </div>
+        </div>
+      `;
 
     });
 
