@@ -133,7 +133,7 @@ Optei por continuar trabalhando no projeto para estudar melhor o layout, aprimor
 
 Página publicada:
 
-l-p-percepta-teste.vercel.app
+link da página: https://l-p-percepta-teste.vercel.app/
 
 Link do Painel ADMIN : https://l-p-percepta-teste.vercel.app/admin.html
 
