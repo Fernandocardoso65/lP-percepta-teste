@@ -2494,14 +2494,30 @@ button {
     }
 }
 
-/* =========================================================
-   CHECKBOXES — PADRONIZAÇÃO
-   ========================================================= */
+/* PADRONIZA CHECKBOX DOS FORMULÁRIOS */
+input[type="checkbox"] {
+    width: 20px !important;
+    height: 20px !important;
+    min-width: 20px !important;
+    min-height: 20px !important;
+    max-width: 20px !important;
+    max-height: 20px !important;
+    flex: 0 0 20px !important;
+    margin: 3px 12px 0 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    appearance: auto;
+    -webkit-appearance: checkbox;
+}
 
-.checkbox input[type="checkbox"] {
-    width: 18px;
-    height: 18px;
-    min-width: 18px;
-    flex: 0 0 18px;
-    margin: 0;
+@media (max-width: 768px) {
+    input[type="checkbox"] {
+        width: 20px !important;
+        height: 20px !important;
+        min-width: 20px !important;
+        min-height: 20px !important;
+        max-width: 20px !important;
+        max-height: 20px !important;
+        flex-basis: 20px !important;
+    }
 }
