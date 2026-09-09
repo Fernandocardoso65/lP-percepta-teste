@@ -135,6 +135,8 @@ Página publicada:
 
 l-p-percepta-teste.vercel.app
 
+Link do Painel ADMIN : https://l-p-percepta-teste.vercel.app/admin.html
+
 ## Repositório
 
 LINK-DO-REPOSITORIO
