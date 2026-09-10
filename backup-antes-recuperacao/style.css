@@ -699,9 +699,6 @@ button {
   font-weight: 500;
 }
 
-/* "É controle." precisa ficar em branco, igual ao Figma.
-   Recomendo envolver esse trecho no HTML com <span class="branco">É controle.</span>
-   Assim que fizer isso, essa regra assume o estilo certo automaticamente: */
 .controle__conteudo h2 .branco {
   color: var(--branco);
   font-weight: 900;
