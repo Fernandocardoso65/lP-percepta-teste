@@ -145,7 +145,7 @@ Link do Painel ADMIN : https://l-p-percepta-teste.vercel.app/admin.html
 
 ## Repositório
 
-LINK-DO-REPOSITORIO
+ https://github.com/Fernandocardoso65/lP-percepta-teste/tree/main
 
 ## Acesso para avaliação
 
