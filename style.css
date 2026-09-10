@@ -2223,8 +2223,6 @@ button {
         border-top-color: var(--verde);
     }
 
-    /* Quando outra aba está ativa,
-     fica verde a linha da aba imediatamente anterior */
     .aba:has(+ .aba.aba--ativa) {
         border-bottom-color: var(--verde);
     }
