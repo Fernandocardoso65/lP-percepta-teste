@@ -139,13 +139,13 @@ Optei por continuar trabalhando no projeto para estudar melhor o layout, aprimor
 
 Página publicada:
 
-link da página: https://l-p-percepta-teste.vercel.app/
+ https://l-p-percepta-teste.vercel.app/
 
-Link do Painel ADMIN : https://l-p-percepta-teste.vercel.app/admin.html
+ Painel ADMIN : https://l-p-percepta-teste.vercel.app/admin.html
 
 ## Repositório
 
- https://github.com/Fernandocardoso65/lP-percepta-teste/tree/main
+https://github.com/Fernandocardoso65/lP-percepta-teste
 
 ## Acesso para avaliação
 
