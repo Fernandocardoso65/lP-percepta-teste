@@ -1080,7 +1080,10 @@ button {
     font-size: clamp(1.15rem, 1.45vw, 1.6rem);
     font-weight: 300;
     line-height: 1.25;
-    white-space: nowrap;
+
+    white-space: normal;
+    max-width: 620px;
+    margin: 0 auto;
 }
 
 /* =========================================================
@@ -2750,7 +2753,7 @@ input[type="checkbox"] {
     }
 }
 
-@@media (max-width: 768px) {
+@media (max-width: 768px) {
 
     .rodape__descricao p {
         font-family: 'Roboto', sans-serif !important;
@@ -2861,4 +2864,32 @@ input[type="checkbox"] {
         text-align: center !important;
     }
 
+}
+
+.perdas__titulo .desktop {
+    display: inline;
+}
+
+.perdas__titulo .mobile {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .perdas__titulo .desktop {
+        display: none;
+    }
+
+    .perdas__titulo .mobile {
+        display: inline;
+    }
+}
+
+.perdas__titulo .desktop,
+.perdas__titulo .mobile {
+    color: #ffffff !important;
+}
+
+.perdas__titulo strong {
+    color: var(--verde) !important;
+    font-weight: inherit;
 }
